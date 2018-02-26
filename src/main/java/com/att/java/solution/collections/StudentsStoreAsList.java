@@ -68,4 +68,9 @@ public class StudentsStoreAsList implements StudentsStore {
 		}
 		return result.toString();
 	}
+
+	@Override
+	public void deleteAll() {
+		this.students.clear();
+	}
 }

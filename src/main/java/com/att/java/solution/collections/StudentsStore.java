@@ -48,4 +48,9 @@ public interface StudentsStore {
 	 */
 	int countStudents();
 	
+	/**
+	 * Clear Collection from all students
+	 */
+	void deleteAll();
+	
 }

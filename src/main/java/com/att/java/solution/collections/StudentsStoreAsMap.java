@@ -56,4 +56,9 @@ public class StudentsStoreAsMap implements StudentsStore {
 		return result.toString();
 	}
 
+	@Override
+	public void deleteAll() {
+		this.students.clear();
+	}
+
 }

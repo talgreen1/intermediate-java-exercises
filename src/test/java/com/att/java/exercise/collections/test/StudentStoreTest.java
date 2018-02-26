@@ -4,20 +4,37 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import com.att.java.solution.collections.Student;
 import com.att.java.solution.collections.StudentsStore;
+import com.att.java.solution.collections.StudentsStoreAsList;
 import com.att.java.solution.collections.StudentsStoreAsMap;
 
+@RunWith(value = Parameterized.class)
 public class StudentStoreTest {
 
+	@Parameter
+	public StudentsStore store;
+	
 	Student s1 = new Student("Naor Levy", "1");
 	Student s2 = new Student("Meir Cohen", "2");
 	Student s3 = new Student("Dan Avraham", "3");
 
+    @Parameters(name = "{index}: type {0}")
+    public static Object[] data() {
+        return new Object[]{
+        		new StudentsStoreAsList(),
+        		new StudentsStoreAsMap()
+        };
+    }
+    
 	@Test
 	public void testAdd() {
-		StudentsStore store = prepareStudentStore(true);
+		prepareStudentStore(store, true);
 		Student kuku = new Student("Yosi", "87612354765");
 		Student kuku1 = new Student("Yosi", "87612354765");
 		
@@ -39,38 +56,38 @@ public class StudentStoreTest {
 	
 	@Test
 	public void testThatNewStoreIsCreatedWithZeroElements() {
-		StudentsStore u = prepareStudentStore(true);
-		Assert.assertTrue(u.getAllStudents().size() == 0);
+		prepareStudentStore(store, true);
+		Assert.assertTrue(store.getAllStudents().size() == 0);
 	}
 
 	@Test
 	public void testGet() {
-		StudentsStore u = prepareStudentStore(false);
+		prepareStudentStore(store, false);
 		Assert.assertTrue(
-				u.getStudent(s1.getId()) == s1 && u.getStudent(s2.getId()) == s2 && u.getStudent(s3.getId()) == s3);
+				store.getStudent(s1.getId()) == s1 && store.getStudent(s2.getId()) == s2 && store.getStudent(s3.getId()) == s3);
 	}
 
 	@Test
 	public void testDelete() {
-		StudentsStore u = prepareStudentStore(false);
+		prepareStudentStore(store, false);
 		String id = s2.getId();
 
-		Assert.assertTrue(u.getStudent(id) == s2);
-		Student removedStudent = u.deleteStudent(id);
-		Assert.assertTrue(u.countStudents() == 2 && u.getStudent(id) == null && removedStudent == s2);
+		Assert.assertTrue(store.getStudent(id) == s2);
+		Student removedStudent = store.deleteStudent(id);
+		Assert.assertTrue(store.countStudents() == 2 && store.getStudent(id) == null && removedStudent == s2);
 	}
 
 	@Test
 	public void testToString() {
-		StudentsStore u = prepareStudentStore(false);
-		String str = u.toString();
+		prepareStudentStore(store, false);
+		String str = store.toString();
 		Assert.assertTrue(str.contains(s1.getName()) && str.contains(s2.getName()) && str.contains(s3.getName()));
 	}
 
 	@Test
-	public void voidTestGetAll() {
-		StudentsStore u = prepareStudentStore(false);
-		List<Student> students = u.getAllStudents();
+	public void testGetAll() {
+		prepareStudentStore(store, false);
+		List<Student> students = store.getAllStudents();
 		Assert.assertTrue(
 				students.size() == 3 && students.contains(s1) && students.contains(s2) && students.contains(s3));
 	}
@@ -78,21 +95,19 @@ public class StudentStoreTest {
 	@Test
 	public void testUpdateStudent() {
 		Student updatedS3 = new Student("Dan Avraham-Cohen", "3");
-		StudentsStore u = prepareStudentStore(false);
+		prepareStudentStore(store, false);
 
-		Student oldStudent = u.updateStudent(updatedS3);
+		Student oldStudent = store.updateStudent(updatedS3);
 
-		Assert.assertTrue(u.countStudents() == 3 && u.getStudent(s3.getId()) == updatedS3 && oldStudent == s3);
+		Assert.assertTrue(store.countStudents() == 3 && store.getStudent(s3.getId()) == updatedS3 && oldStudent == s3);
 	}
 
-	private StudentsStore prepareStudentStore(boolean isEmpty) {
-		StudentsStore u = new StudentsStoreAsMap();
-
+	private void prepareStudentStore(StudentsStore store, boolean isEmpty) {
+		store.deleteAll();
 		if (!isEmpty) {
-			u.addStudent(s1);
-			u.addStudent(s2);
-			u.addStudent(s3);
+			store.addStudent(s1);
+			store.addStudent(s2);
+			store.addStudent(s3);
 		}
-		return u;
 	}
 }
