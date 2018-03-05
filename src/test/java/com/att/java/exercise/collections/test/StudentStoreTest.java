@@ -53,12 +53,6 @@ public class StudentStoreTest {
 		Assert.assertTrue(countBefore == countAfter);
 		
 	}
-	
-	@Test
-	public void testThatNewStoreIsCreatedWithZeroElements() {
-		prepareStudentStore(store, true);
-		Assert.assertTrue(store.getAllStudents().size() == 0);
-	}
 
 	@Test
 	public void testGet() {
