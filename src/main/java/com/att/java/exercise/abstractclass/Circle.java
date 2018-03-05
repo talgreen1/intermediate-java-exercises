@@ -37,7 +37,7 @@ public class Circle extends Shape {
 
 	@Override
 	public String toString() {
-		return String.format("Circle : { radius : %d, color : %s }", radius, color);
+		return String.format("Circle : { radius : %f, color : %s }", radius, color.toString());
 	}
 
 }

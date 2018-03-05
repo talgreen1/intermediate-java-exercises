@@ -12,4 +12,8 @@ public class Square extends Rectangle {
 		super(edge, edge, color);
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Square : { edge : %f, color : %s }", height, color.toString());
+	}
 }

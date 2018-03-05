@@ -47,6 +47,11 @@ public class Rectangle extends Shape {
 	}
 
 	@Override
+	public String toString() {
+		return String.format("Rectangle : { height : %f, width : %f, color : %s }", height, width, color.toString());
+	}
+	
+	@Override
 	public void draw() {
 		System.out.println("*********");
 		System.out.println("*********");

@@ -81,6 +81,7 @@ public class App {
 	}
 	
 	private static void printShape(Shape s) {
+		System.out.println(s);
 		System.out.println("Area      = " + s.calcArea());
 		System.out.println("Perimeter = " + s.calcPerimeter());
 		System.out.println("Color     = " + s.getColor());		
