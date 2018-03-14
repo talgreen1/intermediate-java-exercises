@@ -1,4 +1,4 @@
-package com.att.java.solution.collections;
+package com.att.java.exercise.collections;
 
 public class Student {
 	private String name;

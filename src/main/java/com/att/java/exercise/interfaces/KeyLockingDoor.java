@@ -1,69 +1,44 @@
 package com.att.java.exercise.interfaces;
 
 public class KeyLockingDoor implements Door {
-	private static final Key KEY = new Key("7654");
-			
-	private boolean open = false;
-	private boolean locked = true;
-	
+	private static final Key KEY = new Key("secret");
+
 	@Override
 	public boolean isOpen() {
-		return open;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public boolean open() {
-		boolean result = false;
-		
-		//Manage to open only if door is unlocked
-		if (!locked) {
-			result = true;
-		}
-		
-		return result;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public boolean close() {
-		boolean result = false;
-		
-		//Shall return true only 
-		if (open && !locked) {
-			open = false;
-			result = true;
-		}
-		return result;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public boolean lock(Key key) {
-		if (isValid(key)) {
-			this.locked = true;
-			return true;
-		} else {
-			System.out.println("Must provide a valid key!");
-			return false;
-		}
+	public boolean lock(Key k) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
-	public boolean unlock(Key key) {
-		if (isValid(key)) {
-			this.locked = false;
-			return true;
-		} else {
-			System.out.println("Must provide a valid key!");
-			return false;
-		}
-	}
-
-	private boolean isValid(Key key) {
-		return key.getKey().equals(KEY.getKey());
+	public boolean unlock(Key k) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public boolean isLocked() {
-		return locked;
+		// TODO Auto-generated method stub
+		return false;
 	}
+			
+
 
 }

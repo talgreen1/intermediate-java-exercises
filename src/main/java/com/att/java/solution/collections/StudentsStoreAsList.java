@@ -3,6 +3,9 @@ package com.att.java.solution.collections;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.att.java.exercise.collections.Student;
+import com.att.java.exercise.collections.StudentsStore;
+
 public class StudentsStoreAsList implements StudentsStore {
 	private List<Student> students = null;
 	

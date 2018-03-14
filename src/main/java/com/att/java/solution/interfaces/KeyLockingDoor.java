@@ -1,7 +1,10 @@
 package com.att.java.solution.interfaces;
 
+import com.att.java.exercise.interfaces.Door;
+import com.att.java.exercise.interfaces.Key;
+
 public class KeyLockingDoor implements Door {
-	private static final Key KEY = new Key("7654");
+	private static final Key KEY = new Key("secret");
 			
 	private boolean open = false;
 	private boolean locked = true;
@@ -13,30 +16,26 @@ public class KeyLockingDoor implements Door {
 
 	@Override
 	public boolean open() {
-		boolean result = false;
-		
 		//Manage to open only if door is unlocked
 		if (!locked) {
-			result = true;
+			open = true;
 		}
-		
-		return result;
+		return open;
 	}
 
 	@Override
 	public boolean close() {
-		boolean result = false;
-		
-		//Shall return true only 
-		if (open && !locked) {
-			open = false;
-			result = true;
-		}
-		return result;
+		open = false;
+		return !open;
 	}
 
 	@Override
 	public boolean lock(Key key) {
+		if (open) {
+			System.out.println("Must close door first!");
+			return false;
+		}
+		
 		if (isValid(key)) {
 			this.locked = true;
 			return true;
@@ -48,6 +47,10 @@ public class KeyLockingDoor implements Door {
 
 	@Override
 	public boolean unlock(Key key) {
+		if (open || !locked) {
+			return true;			
+		}
+		
 		if (isValid(key)) {
 			this.locked = false;
 			return true;

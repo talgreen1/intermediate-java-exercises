@@ -1,5 +1,8 @@
 package com.att.java.solution.interfaces;
 
+import com.att.java.exercise.interfaces.Door;
+import com.att.java.exercise.interfaces.Key;
+
 public class NonLockingDoor implements Door {
 	
 	private boolean open = false;

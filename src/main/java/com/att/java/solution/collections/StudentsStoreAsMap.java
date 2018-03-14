@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.att.java.exercise.collections.Student;
+import com.att.java.exercise.collections.StudentsStore;
+
 public class StudentsStoreAsMap implements StudentsStore {
 	private Map<String, Student> students = null;
 

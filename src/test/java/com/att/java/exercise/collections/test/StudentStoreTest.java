@@ -9,8 +9,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.att.java.solution.collections.Student;
-import com.att.java.solution.collections.StudentsStore;
+import com.att.java.exercise.collections.Student;
+import com.att.java.exercise.collections.StudentsStore;
 import com.att.java.solution.collections.StudentsStoreAsList;
 import com.att.java.solution.collections.StudentsStoreAsMap;
 
