@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.att.java.exercise.interfaces.Key;
-import com.att.java.solution.interfaces.KeyLockingDoor;
+import com.att.java.exercise.interfaces.KeyLockingDoor;
 
 public class KeyLockingDoorTest {
 
